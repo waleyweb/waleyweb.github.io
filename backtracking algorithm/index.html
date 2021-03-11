@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Backtracking | Hao Wu&#39;s Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1.13.0.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = false
+    </script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="/images/waley.jpg" alt="Hao Wu">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">Hao Wu&#39;s Homepage</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">Home</a>
+                
+                <a href="/CV/index.html">CV</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">Home</a>
+                    
+                    <a href="/CV/index.html">CV</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-ckm51m84t001k45rj5yg85h81" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      Backtracking
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2021-01-23T23:05:47.000Z" itemprop="datePublished">2021-01-23</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/Computer-Science/">Computer Science</a>
+            </div>
+            
+
+            
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li></ul>
+            </div>
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h1 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a><strong>回溯算法</strong></h1><p><strong>解决一个回溯问题，实际上就是一个决策树的遍历问题。</strong></p>
+<pre><code>1. 路径：已经做出的选择
+2. 选择列表：当前可做的选择
+3. 结束条件：到达决策树底层，无法再做选择的条件</code></pre>
+<a id="more"></a>
+<h3 id="回溯算法的框架"><a href="#回溯算法的框架" class="headerlink" title="回溯算法的框架"></a>回溯算法的框架</h3><pre><code class="C">result = []
+def backtrack(路径, 选择列表): 
+    if 满足结束条件:
+        result.add(路径) 
+        return
+
+    for 选择 in 选择列表: 做选择
+        backtrack(路径, 选择列表) 
+        撤销选择</code></pre>
+<p>核心在于for循环里面的递归，在递归调用前做选择，在递归调用之后撤销选择。</p>
+<h1 id="全排列问题"><a href="#全排列问题" class="headerlink" title="全排列问题"></a><strong>全排列问题</strong></h1><p>在递归之前做出选择，在递归之后撤销刚才的选择。</p>
+<pre><code class="C">List&lt;List&lt;Integer&gt;&gt; res = new LinkedList&lt;&gt;();
+
+/* 主函数，输入一组不重复的数字，返回它们的全排列 */ 
+List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123;
+    // 记录「路径」
+    LinkedList&lt;Integer&gt; track = new LinkedList&lt;&gt;(); 
+    backtrack(nums, track);
+    return res;
+&#125;
+
+// 路径:记录在 track 中
+// 选择列表:nums 中不存在于 track 的那些元素
+// 结束条件:nums 中的元素全都在 track 中出现
+void backtrack(int[] nums, LinkedList&lt;Integer&gt; track) &#123;
+    // 触发结束条件
+    if (track.size() == nums.length) &#123;
+        res.add(new LinkedList(track));
+        return; 
+        &#125;
+        for (int i = 0; i &lt; nums.length; i++) &#123; 
+        // 排除不合法的选择
+        if (track.contains(nums[i]))
+            continue; 
+        // 做选择
+        track.add(nums[i]);
+        // 进入下一层决策树 
+        backtrack(nums, track); 
+        // 取消选择
+        track.removeLast();
+    &#125;
+&#125;</code></pre>
+<p>这个算法解决全排列不是很高效，因为对链表使用<code>contains</code>方法需要<strong>O(N)</strong> 的时间复杂度。<br><strong>回溯算法就是纯暴力穷举，复杂度一般都很高。</strong></p>
+<h1 id="N-Queen问题"><a href="#N-Queen问题" class="headerlink" title="N-Queen问题"></a><strong>N-Queen问题</strong></h1><p>解释：一个N*N的棋盘，放置N个皇后，使得她们不能互相攻击。<br>PS：皇后可以攻击<strong>同一行、同一列、左上左下右上右下</strong>四个方向的任意单位。</p>
+<p>直接套用框架</p>
+<pre><code class="C">vector&lt;vector&lt;string&gt;&gt; res;
+
+/* 输入棋盘边⻓ n，返回所有合法的放置 */ 
+vector&lt;vector&lt;string&gt;&gt; solveNQueens(int n) &#123;
+// &#39;.&#39; 表示空，&#39;Q&#39; 表示皇后，初始化空棋盘 
+    vector&lt;string&gt; board(n, string(n, &#39;.&#39;)); 
+    backtrack(board, 0);
+    return res;
+&#125;
+
+// 路径:board 中小于 row 的那些行都已经成功放置了皇后 
+// 选择列表:第 row 行的所有列都是放置皇后的选择
+// 结束条件:row 超过 board 的最后一行
+void backtrack(vector&lt;string&gt;&amp; board, int row) &#123;
+    // 触发结束条件
+    if (row == board.size()) &#123;
+        res.push_back(board);
+        return; 
+    &#125;
+
+    int n = board[row].size();
+    for (int col = 0; col &lt; n; col++) &#123;
+        // 排除不合法选择
+        if (!isValid(board, row, col))
+            continue; 
+            // 做选择
+            board[row][col] = &#39;Q&#39;;
+            // 进入下一行决策 
+            backtrack(board, row + 1); 
+            // 撤销选择
+            board[row][col] = &#39;.&#39;;
+        &#125;
+&#125;
+
+/* 是否可以在 board[row][col] 放置皇后? */
+bool isValid(vector&lt;string&gt;&amp; board, int row, int col) &#123;
+    int n = board.size();
+    // 检查列是否有皇后互相冲突
+    for (int i = 0; i &lt; n; i++) &#123;
+        if (board[i][col] == &#39;Q&#39;)
+            return false;
+    &#125;
+
+    // 检查右上方是否有皇后互相冲突
+    for (int i = row - 1, j = col + 1; i &gt;= 0 &amp;&amp; j &lt; n; i--, j++) &#123;
+        if (board[i][j] == &#39;Q&#39;)
+            return false;
+    &#125;
+
+    // 检查左上方是否有皇后互相冲突
+    for (int i = row - 1, j = col - 1; i &gt;= 0 &amp;&amp; j &gt;= 0; i--, j--) &#123;
+        if (board[i][j] == &#39;Q&#39;)
+            return false;
+    &#125; 
+    return true;
+&#125;</code></pre>
+<p>时间复杂度：<strong>O(N^(N+1))</strong></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h1><p>回溯算法就是个多叉树的遍历问题，关键在<strong>前序遍历</strong>和<strong>后序遍历</strong>的位置坐一些操作。</p>
+<p>算法框架</p>
+<pre><code class="python">def backtrack(...):
+    for 选择 in 选择列表:
+        做选择
+        backtrack(...)
+        撤销选择</code></pre>
+<p>动态规划三个需要明确的点：<strong>状态</strong>、<strong>选择</strong>和<strong>base case</strong>。<br>回溯算法：<strong>路径</strong>、<strong>选择列表</strong>和<strong>结束条件</strong>。</p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/agree%20or%20disagee%20-%20response3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          是否赞同写法 3
+        
+      </div>
+    </a>
+  
+  
+    <a href="/agree%20or%20disagee%20-%20response2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">是否赞同写法 2</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=Backtracking - Hao Wu's Homepage&url=https://waley.tech/backtracking%20algorithm/">
+            <box-icon type='logo' name='twitter'></box-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=Backtracking - Hao Wu's Homepage&u=https://waley.tech/backtracking%20algorithm/">
+            <box-icon name='facebook-square' type='logo' ></box-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=Backtracking - Hao Wu's Homepage&url=https://waley.tech/backtracking%20algorithm/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+             
+            <aside class="sidebar">
+            
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Science/">Computer Science</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IELTS/">IELTS</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CC/" rel="tag">CC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GRA/" rel="tag">GRA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Guide/" rel="tag">Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TR/" rel="tag">TR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vocabulary/" rel="tag">Vocabulary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Writing-Classifying/" rel="tag">Writing Classifying</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            Hao Wu&#39;s Homepage &copy; 2021<br>
+            Powered By Hexo · Theme By <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Aomori</a>
+        </div>
+    </div>
+
+</footer>
+
+
+
+
+<script src="/dist/build.js?1.13.0.js"></script>
+
+
+<script src="/dist/custom.js?1.13.0.js"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

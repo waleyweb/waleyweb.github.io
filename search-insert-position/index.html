@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>search-insert-position | Hao Wu&#39;s Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1.13.0.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = false
+    </script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="/images/waley.jpg" alt="Hao Wu">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">Hao Wu&#39;s Homepage</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">Home</a>
+                
+                <a href="/CV/index.html">CV</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">Home</a>
+                    
+                    <a href="/CV/index.html">CV</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-ckm51m852002i45rj9b5h3j2l" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      search-insert-position
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2021-02-03T22:41:47.000Z" itemprop="datePublished">2021-02-03</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/Computer-Science/">Computer Science</a>
+            </div>
+            
+
+            
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li></ul>
+            </div>
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h1 id="LeetCode-35"><a href="#LeetCode-35" class="headerlink" title="LeetCode 35"></a><strong>LeetCode 35</strong></h1><h2 id="搜索插入位置"><a href="#搜索插入位置" class="headerlink" title="搜索插入位置"></a><strong>搜索插入位置</strong></h2><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。你可以假设数组中无重复元素。</p>
+<p>示例 1:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 5<br>    输出: 2</p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 2<br>    输出: 1</p>
+</blockquote>
+<p>示例 3:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 7<br>    输出: 4</p>
+</blockquote>
+<p>示例 4:</p>
+<blockquote>
+<p>输入: [1,3,5,6], 0<br>    输出: 0</p>
+</blockquote>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-insert-position">https://leetcode-cn.com/problems/search-insert-position</a></p>
+<a id="more"></a>
+
+<h2 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a><strong>暴力解法</strong></h2><pre><code class="Python">class Solution:
+    def searchInsert(self, nums: List[int], target: int) -&gt; int:
+        for i in nums:
+            if i &gt;= target:
+                return i
+        return List</code></pre>
+<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+<h2 id="二分法-写法一"><a href="#二分法-写法一" class="headerlink" title="二分法(写法一 )"></a><strong>二分法(写法一 )</strong></h2><pre><code class="Python">class Solution:
+    def searchInsert(self, nums: List[int], target: int) -&gt; int:
+        n = len(nums)
+        left = 0
+        right = n - 1   # target在[left,right]
+
+        while (left &lt;= right):
+            middle = left + ((right - left) / 2)
+            if nums[int(middle)] &gt; target:
+                right = int(middle) - 1 # target在左区间 [left,middle-1]
+            elif nums[int(middle)] &lt; target:
+                left = int(middle) + 1  # target在右区间 [middle-1,right]
+            else:
+                return int(middle)
+
+        return right + 1</code></pre>
+<p>时间复杂度：O(logn)<br>空间复杂度：O(1)</p>
+<h2 id="二分法-写法二"><a href="#二分法-写法二" class="headerlink" title="二分法(写法二 )"></a><strong>二分法(写法二 )</strong></h2><pre><code class="Python">class Solution:
+    def searchInsert(self, nums: List[int], target: int) -&gt; int:
+        n = len(nums)
+        left = 0
+        right = n   # target在[left,right)
+
+        while (left &lt; right):
+            middle = left + ((right - left) / 2)
+            if nums[int(middle)] &gt; target:
+                right = int(middle)     # target在左区间 [left,middle)
+            elif nums[int(middle)] &lt; target:
+                left = int(middle) + 1  # target在右区间 （middle+1,right]
+            else:
+                return int(middle)
+
+        return right + 1</code></pre>
+<p>时间复杂度：O(logn)<br>空间复杂度：O(1)</p>
+<h2 id="Python3"><a href="#Python3" class="headerlink" title="Python3"></a><strong>Python3</strong></h2><pre><code class="Python">class Solution:
+    def searchInsert(self, nums: List[int], target: int) -&gt; int:
+        return len([i for i in nums if i &lt; target])</code></pre>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/remove-element/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          remove-element
+        
+      </div>
+    </a>
+  
+  
+    <a href="/extension%20of%20Body%20Paragraph%2002/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">核心段逻辑扩展 2</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=search-insert-position - Hao Wu's Homepage&url=https://waley.tech/search-insert-position/">
+            <box-icon type='logo' name='twitter'></box-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=search-insert-position - Hao Wu's Homepage&u=https://waley.tech/search-insert-position/">
+            <box-icon name='facebook-square' type='logo' ></box-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=search-insert-position - Hao Wu's Homepage&url=https://waley.tech/search-insert-position/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+             
+            <aside class="sidebar">
+            
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Science/">Computer Science</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IELTS/">IELTS</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CC/" rel="tag">CC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GRA/" rel="tag">GRA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Guide/" rel="tag">Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TR/" rel="tag">TR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vocabulary/" rel="tag">Vocabulary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Writing-Classifying/" rel="tag">Writing Classifying</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            Hao Wu&#39;s Homepage &copy; 2021<br>
+            Powered By Hexo · Theme By <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Aomori</a>
+        </div>
+    </div>
+
+</footer>
+
+
+
+
+<script src="/dist/build.js?1.13.0.js"></script>
+
+
+<script src="/dist/custom.js?1.13.0.js"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>linked-list-cycle-ii | Hao Wu&#39;s Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1.13.0.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = false
+    </script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="/images/waley.jpg" alt="Hao Wu">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">Hao Wu&#39;s Homepage</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">Home</a>
+                
+                <a href="/CV/index.html">CV</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">Home</a>
+                    
+                    <a href="/CV/index.html">CV</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-ckm51m84z002545rjg7o81tax" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      linked-list-cycle-ii
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2021-02-17T00:17:47.000Z" itemprop="datePublished">2021-02-17</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/Computer-Science/">Computer Science</a>
+            </div>
+            
+
+            
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li></ul>
+            </div>
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h1 id="LeetCode-142"><a href="#LeetCode-142" class="headerlink" title="LeetCode 142"></a><strong>LeetCode 142</strong></h1><h2 id="环形链表-II"><a href="#环形链表-II" class="headerlink" title="环形链表 II"></a><strong>环形链表 II</strong></h2><p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。</p>
+<p>为了表示给定链表中的环，我们使用整数 <code>pos</code> 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 <code>pos</code> 是 <code>-1</code>，则在该链表中没有环。注意，<code>pos</code> 仅仅是用于标识环的情况，并不会作为参数传递到函数中。</p>
+<p>说明：不允许修改给定的链表。</p>
+<p>进阶：</p>
+<blockquote>
+<p>你是否可以使用 <code>O(1)</code> 空间解决此题？
+ </p>
+</blockquote>
+<p>示例 1：<br><img src="/images/circularlinkedlist.png"></p>
+<blockquote>
+<p>输入：head = [3,2,0,-4], pos = 1<br>    输出：返回索引为 1 的链表节点<br>    解释：链表中有一个环，其尾部连接到第二个节点。</p>
+</blockquote>
+<p>示例 2：<br><img src="/images/circularlinkedlist_test2.png"></p>
+<blockquote>
+<p>输入：head = [1,2], pos = 0<br>    输出：返回索引为 0 的链表节点<br>    解释：链表中有一个环，其尾部连接到第一个节点。</p>
+</blockquote>
+<p>示例 3：<br><img src="/images/circularlinkedlist_test3.png"></p>
+<blockquote>
+<p>输入：head = [1], pos = -1<br>    输出：返回 null<br>    解释：链表中没有环。
+ </p>
+</blockquote>
+<p>提示：</p>
+<blockquote>
+<p>链表中节点的数目范围在范围 <code>[0, 104]</code> 内<br>    <code>-105 &lt;= Node.val &lt;= 105</code><br>    <code>pos</code> 的值为 <code>-1</code> 或者链表中的一个有效索引</p>
+</blockquote>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle-ii">https://leetcode-cn.com/problems/linked-list-cycle-ii</a></p>
+<a id="more"></a>
+
+<h2 id="判断链表是否有环"><a href="#判断链表是否有环" class="headerlink" title="判断链表是否有环"></a>判断链表是否有环</h2><p>快慢指针法，分别使用 <code>fast</code> 和 <code>slow</code> 指针，从头节点开始， <code>fast</code>指针 每次移动两个节点， <code>slow</code>指针 每次移动一个节点，如果 <code>fast</code> 和 <code>slow</code>指针 在途中相遇，则这个链表有环。</p>
+<h2 id="如果有环，如何找到这个环的入口"><a href="#如果有环，如何找到这个环的入口" class="headerlink" title="如果有环，如何找到这个环的入口"></a>如果有环，如何找到这个环的入口</h2><p>假设从 <code>头结点</code> 到 <code>环形入口节点</code> 的节点数为 x。<br><code>环形入口节点</code> 到 <code>fast</code>指针 与 <code>slow</code>指针 相遇节点 节点数为 y。<br><code>相遇节点</code> 到 <code>环形入口节点</code> 节点数为 z。</p>
+<p>那么相遇时：<br><code>slow</code>指针 走过的节点数为: <code>x + y</code><br><code>fast</code>指针 走过的节点数：<code>x + y + n (y + z)</code><br><code>n</code> 为 <code>fast</code>指针 在环内走了 <code>n</code>圈 才遇到 <code>slow</code>指针，<code>(y + z)</code> 为一圈内节点的个数。</p>
+<p>因为 <code>fast</code>指针 是一步走2个节点，<code>slow</code>指针 一步走1个节点， 所以 <code>fast</code>指针 走过的节点数 = <code>slow</code>指针 走过的节点数 * 2：</p>
+<blockquote>
+<p>(x + y) * 2 = x + y + n (y + z)</p>
+</blockquote>
+<p>两边相消一个 <code>(x + y)</code> ：</p>
+<blockquote>
+<p>x + y = n (y + z)</p>
+</blockquote>
+<p><code>x</code> 表示 <code>头结点</code> 到 <code>环形入口节点</code> 的距离：</p>
+<blockquote>
+<p>x = n (y + z) - y</p>
+</blockquote>
+<p>变形（n &gt;= 1）：</p>
+<blockquote>
+<p>x = (n - 1) (y + z) + z </p>
+</blockquote>
+<p>当 <code>n = 1</code> 时，<code>fast</code>指针 在环形里转了一圈就遇到 <code>slow</code>指针，此时： <code>x = z</code> 。<br>这意味着：从 <code>头节点</code> 出发一个指针，从 <code>相遇节点</code> 也出发一个指针，这两个指针每次直走一个节点，那么 <code>这两个指针相遇的节点</code> 就是 <code>环形入口的节点</code> 。</p>
+<p>在相遇节点处，定义一个 指针<code>index1</code>，在头结点处定一个 指针<code>index2</code>。<br>让 <code>index1</code> 和 <code>index2</code> 同时移动，每次移动一个节点， 那么他们相遇的地方就是 <code>环形入口的节点</code>。</p>
+<p>当 <code>n &gt; 1</code> 时，<code>index1</code>指针 在环里转了 (n-1)圈后，遇到 <code>index2</code>指针，相遇的地方依然是 <code>环形入口的节点</code>。</p>
+<h2 id="C"><a href="#C" class="headerlink" title="C"></a><strong>C</strong></h2><p>执行用时：8 ms<br>内存消耗：7 MB</p>
+<pre><code class="C">struct ListNode *detectCycle(struct ListNode *head) &#123;
+    struct ListNode* fast = head;
+    struct ListNode* slow = head;
+    while (fast != NULL &amp;&amp; fast-&gt;next != NULL)&#123;
+        slow = slow-&gt;next;
+        fast = fast-&gt;next-&gt;next;
+
+        if (slow == fast)&#123;
+            struct ListNode* index1 = fast;
+            struct ListNode* index2 = head;
+            while (index1 != index2)&#123;
+                index1 = index1-&gt;next;
+                index2 = index2-&gt;next;
+            &#125;
+            return index2;
+        &#125;
+    &#125;
+    return NULL;
+&#125;</code></pre>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/Discussion/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          Discussion
+        
+      </div>
+    </a>
+  
+  
+    <a href="/reverse-linked-list/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">reverse-linked-list</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=linked-list-cycle-ii - Hao Wu's Homepage&url=https://waley.tech/linked-list-cycle-ii/">
+            <box-icon type='logo' name='twitter'></box-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=linked-list-cycle-ii - Hao Wu's Homepage&u=https://waley.tech/linked-list-cycle-ii/">
+            <box-icon name='facebook-square' type='logo' ></box-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=linked-list-cycle-ii - Hao Wu's Homepage&url=https://waley.tech/linked-list-cycle-ii/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+             
+            <aside class="sidebar">
+            
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Science/">Computer Science</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IELTS/">IELTS</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CC/" rel="tag">CC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GRA/" rel="tag">GRA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Guide/" rel="tag">Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TR/" rel="tag">TR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vocabulary/" rel="tag">Vocabulary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Writing-Classifying/" rel="tag">Writing Classifying</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            Hao Wu&#39;s Homepage &copy; 2021<br>
+            Powered By Hexo · Theme By <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Aomori</a>
+        </div>
+    </div>
+
+</footer>
+
+
+
+
+<script src="/dist/build.js?1.13.0.js"></script>
+
+
+<script src="/dist/custom.js?1.13.0.js"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
