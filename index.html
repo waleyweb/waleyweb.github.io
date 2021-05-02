@@ -100,6 +100,64 @@
   
     
       <article
+  id="post-max-one problem"
+  class="article article-type-post"
+>
+
+  
+
+  <div class="article-inner">
+    
+
+    <div class="article-body">
+      <header class="article-title">
+        <a href="/max-one%20problem/">OneMax Problem</a>
+      </header>
+      <div class="article-entry post-inner-html">
+        
+          <p><font face = "微软雅黑"><strong>OneMax问题是遗传算法的入门问题：如何使一段长度固定的二进制字符串所有位置上数字之和最大。</strong></font><br>下面以长度10为例。</p>
+<h1 id="所需环境"><a href="#所需环境" class="headerlink" title="所需环境"></a>所需环境</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.python.org/downloads/release/python-394/">Python 3.9</a></li>
+<li><a target="_blank" rel="noopener" href="https://deap.readthedocs.io/en/master/">DEAP Library</a></li>
+<li><a target="_blank" rel="noopener" href="https://jupyter.org/">Juypter Notebook</a></li>
+</ul>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="python">import random
+from deap import algorithms, base, creator, tools</code></pre>
+<h2 id="定义个体"><a href="#定义个体" class="headerlink" title="定义个体"></a>定义个体</h2><pre><code class="python">creator.create(&quot;FitnessMax&quot;, base.Fitness, weights=(1.0,))
+creator.create(&quot;Individual&quot;, list, fitness=creator.FitnessMax)</code></pre>
+<pre><code class="python">toolbox = base.Toolbox()</code></pre>
+        
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <footer class="article-footer">
+    <div class="article-more-info">
+      <div class="article-date">
+  <time datetime="2021-05-02T15:41:47.000Z" itemprop="datePublished">2021-05-02</time>
+</div>
+      
+        <div class="article-category">
+          <a class="article-category-link" href="/categories/Evolutionary-Computation/">Evolutionary Computation</a>
+        </div>
+      
+      
+        <div class="article-tag">
+          <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
+        </div>
+      
+    </div>
+  </footer>
+
+</article>
+
+    
+  
+    
+      <article
   id="post-Discussion"
   class="article article-type-post"
 >
@@ -581,64 +639,10 @@
 
     
   
-    
-      <article
-  id="post-reverse-linked-list"
-  class="article article-type-post"
->
-
-  
-
-  <div class="article-inner">
-    
-
-    <div class="article-body">
-      <header class="article-title">
-        <a href="/reverse-linked-list/">LeetCode 206 - reverse-linked-list</a>
-      </header>
-      <div class="article-entry post-inner-html">
-        
-          <h1 id="反转链表"><a href="#反转链表" class="headerlink" title="反转链表"></a><strong>反转链表</strong></h1><p>反转一个单链表。</p>
-<p>示例:</p>
-<blockquote>
-<p>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>    输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
-</blockquote>
-<p>进阶:<br>你可以迭代或递归地反转链表。你能否用两种方法解决这道题？</p>
-<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-insert-position">https://leetcode-cn.com/problems/search-insert-position</a></p>
-        
-      </div>
-    </div>
-
-    
-
-  </div>
-
-  <footer class="article-footer">
-    <div class="article-more-info">
-      <div class="article-date">
-  <time datetime="2021-02-16T23:41:47.000Z" itemprop="datePublished">2021-02-16</time>
-</div>
-      
-        <div class="article-category">
-          <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
-        </div>
-      
-      
-        <div class="article-tag">
-          <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
-        </div>
-      
-    </div>
-  </footer>
-
-</article>
-
-    
-  
 
   
     <nav class="pagination">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next</a>
     </nav>
   
 </div>
@@ -660,7 +664,7 @@
   <div class="widget-wrap widget-cate">
     <div class="widget-title"><span>Categories</span></div>
     <div class="widget-inner">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IELTS/">IELTS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Evolutionary-Computation/">Evolutionary Computation</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IELTS/">IELTS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li></ul>
     </div>
   </div>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     
-    <title>剑指offer 05 - replaceSpace | Hao Wu&#39;s Homepage</title>
+    <title>Hao Wu&#39;s Homepage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     
@@ -20,7 +20,7 @@
 
 
     <script>
-        window.isPost = true
+        window.isPost = false
         window.aomori = {
             
         }
@@ -96,148 +96,73 @@
         <div class="main">
             <section class="inner">
                 <section class="inner-main">
-                    <div class="post">
-    <article id="post-cko7mt4b800299drje48xgqju" class="article article-type-post" itemscope
-    itemprop="blogPost">
-
-    <div class="article-inner">
-
-        
-          
-        
-        
-        
-
-        
-        <header class="article-header">
-            
+                    <div class="index">
   
-    <h1 class="article-title" itemprop="name">
-      剑指offer 05 - replaceSpace
-    </h1>
+    
+      <article
+  id="post-Overweight"
+  class="article article-type-post"
+>
+
   
 
-        </header>
+  <div class="article-inner">
+    
+
+    <div class="article-body">
+      <header class="article-title">
+        <a href="/Overweight/">Overweight</a>
+      </header>
+      <div class="article-entry post-inner-html">
         
-
-        <div class="article-more-info article-more-info-post hairline">
-
-            <div class="article-date">
-  <time datetime="2021-02-05T16:41:47.000Z" itemprop="datePublished">2021-02-05</time>
-</div>
-
-            
-            <div class="article-category">
-                <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
-            </div>
-            
-
-            
-            <div class="article-tag">
-                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
-            </div>
-            
-
-            
-
-        </div>
-
-        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <h1 id="替换空格"><a href="#替换空格" class="headerlink" title="替换空格"></a><strong>替换空格</strong></h1><p>请实现一个函数，把字符串 s 中的每个空格替换成”%20”。</p>
-<p>示例 1：</p>
-<blockquote>
-<p>输入：s = “We are happy.”<br>    输出：”We%20are%20happy.”</p>
+          <blockquote>
+<p> <font face="微软雅黑" size=4>Differences in ages between parents and children are greater than in the past. Do you think the advantage of the development outweigh the disadvantage？（2019年9月28日-中国大陆）</font></p>
 </blockquote>
-<a id="more"></a>
+<blockquote>
+<p> <font face="微软雅黑" size=4>In some countries, some criminal trials are shown on the television and the general public can watch them. Do you think the advantages of this outweigh the disadvantages? （2020年1月4日 中国大陆/ 2016年10月22日）</font></p>
+</blockquote>
+<blockquote>
+<p> <font face="微软雅黑" size=4>Some students take one year off between finishing school and going to university, in order to travel or to work. Do you think advantages outweigh disadvantages?（2020年8月6日 中国大陆）</font></p>
+</blockquote>
 
-<h2 id="C"><a href="#C" class="headerlink" title="C"></a><strong>C</strong></h2><pre><code class="C">char* replaceSpace(char* s)&#123;
-    int len = 0;        // 原始长度
-    int count = 0;      // 空格个数
-    while (s[len] != &#39;\0&#39;) &#123;
-        if (s[len] == &#39; &#39;) count++;
-        len++;
-    &#125;
-    int newLen = len + count * 2; //新长度
-    s = (char*)realloc(s, newLen + 1);
-    while (len &gt;= 0 &amp;&amp; newLen &gt; len) &#123;
-        if (s[len] == &#39; &#39;) &#123;
-            s[newLen--] = &#39;0&#39;;
-            s[newLen--] = &#39;2&#39;;
-            s[newLen--] = &#39;%&#39;;
-        &#125; else &#123;
-            s[newLen--] = s[len];
-        &#125;
-        len--;
-    &#125;
-    return s;
-&#125;</code></pre>
-<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<h2 id="Python3"><a href="#Python3" class="headerlink" title="Python3"></a><strong>Python3</strong></h2><p>运行时间：40 ms<br>内存消耗：14.9 MB</p>
-<pre><code class="Python">class Solution:
-    def replaceSpace(self, s: str) -&gt; str:
-        return s.replace(&#39; &#39;, &quot;%20&quot;)
-&#125;</code></pre>
-
-        </div>
-
+        
+      </div>
     </div>
 
     
 
-    
+  </div>
 
-    
-
-    
-
-    
-
-    
-<nav class="article-nav">
-  
-    <a href="/3sum/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
-        
-          LeetCode 15 - 3sum
-        
-      </div>
-    </a>
-  
-  
-    <a href="/remove-element/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">LeetCode 27 - remove-element</div>
-    </a>
-  
-</nav>
-
-
-    <section class="share">
-        <div class="share-title">分享</div>
-        <a class="share-item" target="_blank"
-            href="https://twitter.com/share?text=剑指offer 05 - replaceSpace - Hao Wu's Homepage&url=https://waley.tech/replaceSpace/">
-            <box-icon type='logo' name='twitter'></box-icon>
-        </a>
-        <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=剑指offer 05 - replaceSpace - Hao Wu's Homepage&u=https://waley.tech/replaceSpace/">
-            <box-icon name='facebook-square' type='logo' ></box-icon>
-        </a>
-        <!-- <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=剑指offer 05 - replaceSpace - Hao Wu's Homepage&url=https://waley.tech/replaceSpace/&pic=">
-            <div class="n-icon n-icon-weibo"></div>
-        </a> -->
-    </section>
+  <footer class="article-footer">
+    <div class="article-more-info">
+      <div class="article-date">
+  <time datetime="2020-12-05T00:10:47.000Z" itemprop="datePublished">2020-12-05</time>
+</div>
+      
+        <div class="article-category">
+          <a class="article-category-link" href="/categories/IELTS/">IELTS</a>
+        </div>
+      
+      
+        <div class="article-tag">
+          <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Writing-Classifying/" rel="tag">Writing Classifying</a></li></ul>
+        </div>
+      
+    </div>
+  </footer>
 
 </article>
 
+    
+  
 
-
-
-
-
-
+  
+    <nav class="pagination">
+        <a class="extend prev" rel="prev" href="/page/3/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
+  
 </div>
+
                 </section>
             </section>
 
@@ -250,12 +175,6 @@
 <div class="widget" id="widget">
     
       
-  <div class="widget-wrap">
-    <div class="widget-inner">
-      <div class="toc post-toc-html"></div>
-    </div>
-  </div>
-
     
       
   <div class="widget-wrap widget-cate">

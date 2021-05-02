@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     
-    <title>剑指offer 05 - replaceSpace | Hao Wu&#39;s Homepage</title>
+    <title>OneMax Problem | Hao Wu&#39;s Homepage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     
@@ -97,7 +97,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-cko7mt4b800299drje48xgqju" class="article article-type-post" itemscope
+    <article id="post-cko7mt4b5001y9drj2ybe00ts" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -113,7 +113,7 @@
             
   
     <h1 class="article-title" itemprop="name">
-      剑指offer 05 - replaceSpace
+      OneMax Problem
     </h1>
   
 
@@ -123,12 +123,12 @@
         <div class="article-more-info article-more-info-post hairline">
 
             <div class="article-date">
-  <time datetime="2021-02-05T16:41:47.000Z" itemprop="datePublished">2021-02-05</time>
+  <time datetime="2021-05-02T15:41:47.000Z" itemprop="datePublished">2021-05-02</time>
 </div>
 
             
             <div class="article-category">
-                <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+                <a class="article-category-link" href="/categories/Evolutionary-Computation/">Evolutionary Computation</a>
             </div>
             
 
@@ -143,40 +143,110 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <h1 id="替换空格"><a href="#替换空格" class="headerlink" title="替换空格"></a><strong>替换空格</strong></h1><p>请实现一个函数，把字符串 s 中的每个空格替换成”%20”。</p>
-<p>示例 1：</p>
-<blockquote>
-<p>输入：s = “We are happy.”<br>    输出：”We%20are%20happy.”</p>
-</blockquote>
+            <p><font face = "微软雅黑"><strong>OneMax问题是遗传算法的入门问题：如何使一段长度固定的二进制字符串所有位置上数字之和最大。</strong></font><br>下面以长度10为例。</p>
+<h1 id="所需环境"><a href="#所需环境" class="headerlink" title="所需环境"></a>所需环境</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.python.org/downloads/release/python-394/">Python 3.9</a></li>
+<li><a target="_blank" rel="noopener" href="https://deap.readthedocs.io/en/master/">DEAP Library</a></li>
+<li><a target="_blank" rel="noopener" href="https://jupyter.org/">Juypter Notebook</a></li>
+</ul>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="python">import random
+from deap import algorithms, base, creator, tools</code></pre>
+<h2 id="定义个体"><a href="#定义个体" class="headerlink" title="定义个体"></a>定义个体</h2><pre><code class="python">creator.create(&quot;FitnessMax&quot;, base.Fitness, weights=(1.0,))
+creator.create(&quot;Individual&quot;, list, fitness=creator.FitnessMax)</code></pre>
+<pre><code class="python">toolbox = base.Toolbox()</code></pre>
 <a id="more"></a>
+<pre><code class="python">toolbox.register(&quot;attr_bool&quot;, random.randint, 0, 1)
+toolbox.register(&quot;individual&quot;, tools.initRepeat, creator.Individual, toolbox.attr_bool, n=100)
+toolbox.register(&quot;population&quot;, tools.initRepeat, list, toolbox.individual)</code></pre>
+<h2 id="定义遗传操作"><a href="#定义遗传操作" class="headerlink" title="定义遗传操作"></a>定义遗传操作</h2><pre><code class="python">def evalOneMax(individual): 
+    return (sum(individual),)</code></pre>
+<pre><code class="python">toolbox.register(&quot;evaluate&quot;, evalOneMax)
+toolbox.register(&quot;select&quot;, tools.selTournament, tournsize=3)
 
-<h2 id="C"><a href="#C" class="headerlink" title="C"></a><strong>C</strong></h2><pre><code class="C">char* replaceSpace(char* s)&#123;
-    int len = 0;        // 原始长度
-    int count = 0;      // 空格个数
-    while (s[len] != &#39;\0&#39;) &#123;
-        if (s[len] == &#39; &#39;) count++;
-        len++;
-    &#125;
-    int newLen = len + count * 2; //新长度
-    s = (char*)realloc(s, newLen + 1);
-    while (len &gt;= 0 &amp;&amp; newLen &gt; len) &#123;
-        if (s[len] == &#39; &#39;) &#123;
-            s[newLen--] = &#39;0&#39;;
-            s[newLen--] = &#39;2&#39;;
-            s[newLen--] = &#39;%&#39;;
-        &#125; else &#123;
-            s[newLen--] = s[len];
-        &#125;
-        len--;
-    &#125;
-    return s;
-&#125;</code></pre>
-<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<h2 id="Python3"><a href="#Python3" class="headerlink" title="Python3"></a><strong>Python3</strong></h2><p>运行时间：40 ms<br>内存消耗：14.9 MB</p>
-<pre><code class="Python">class Solution:
-    def replaceSpace(self, s: str) -&gt; str:
-        return s.replace(&#39; &#39;, &quot;%20&quot;)
-&#125;</code></pre>
+toolbox.register(&quot;mate&quot;, tools.cxUniform, indpb=0.1)
+toolbox.register(&quot;mutate&quot;, tools.mutFlipBit, indpb=0.01)
+
+logbook = tools.Logbook()</code></pre>
+<h2 id="主体部分"><a href="#主体部分" class="headerlink" title="主体部分"></a>主体部分</h2><pre><code class="python">pop = toolbox.population(n=300)
+
+fitnesses = list(map(toolbox.evaluate, pop)) 
+for ind, fit in zip(pop, fitnesses):
+    ind.fitness.values = fit
+
+NGEN = 50
+
+for g in range(NGEN):
+   print(&quot;-- Generation %i --&quot; % g)
+
+   offspring = toolbox.select(pop, len(pop))
+   offspring = list(map(toolbox.clone, offspring))
+
+   for child1, child2 in zip(offspring[::2], offspring[1::2]): 
+       toolbox.mate(child1, child2)
+       del child1.fitness.values
+       del child2.fitness.values
+
+   for mutant in offspring: 
+       toolbox.mutate(mutant) 
+       del mutant.fitness.values
+
+   invalid_ind = [ind for ind in offspring if not ind.fitness.valid] 
+   fitnesses = map(toolbox.evaluate, invalid_ind)
+   for ind, fit in zip(invalid_ind, fitnesses):
+       ind.fitness.values = fit
+
+   pop[:] = offspring</code></pre>
+<h2 id="最优个体"><a href="#最优个体" class="headerlink" title="最优个体"></a>最优个体</h2><pre><code class="python">best_ind = tools.selBest(pop, 1)[0]
+print(&quot;Best individual is %s&quot; % (best_ind)) 
+print(&quot;With fitness %s&quot; % (best_ind.fitness.values))</code></pre>
+<p>Best individual is [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] With fitness 100.0</p>
+<h2 id="记录数据"><a href="#记录数据" class="headerlink" title="记录数据"></a>记录数据</h2><pre><code class="python">stats = tools.Statistics(key=lambda ind: ind.fitness.values)</code></pre>
+<pre><code class="python">import numpy 
+stats.register(&quot;avg&quot;, numpy.mean) 
+stats.register(&quot;std&quot;, numpy.std) 
+stats.register(&quot;min&quot;, numpy.min) 
+stats.register(&quot;max&quot;, numpy.max)</code></pre>
+<p>{‘avg’: 98.19, ‘std’: 1.2438783434618248, ‘min’: 93.0, ‘max’: 100.0}</p>
+<pre><code class="python">record = stats.compile(pop)
+print(record)</code></pre>
+<pre><code class="python">logbook = tools.Logbook()
+logbook.record(gen=0, evals=30, **record)</code></pre>
+<pre><code class="python">logbook.header = &quot;gen&quot;, &quot;avg&quot;, &quot;evals&quot;, &quot;std&quot;, &quot;min&quot;, &quot;max&quot;</code></pre>
+<pre><code class="python">print(logbook)</code></pre>
+<table>
+<thead>
+<tr>
+<th>gen</th>
+<th>avg</th>
+<th>evals</th>
+<th>std</th>
+<th>min</th>
+<th>max</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>98.19</td>
+<td>30</td>
+<td>1.24388</td>
+<td>93</td>
+<td>100</td>
+</tr>
+</tbody></table>
+<h2 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h2><pre><code class="python">import matplotlib.pyplot as plt 
+%matplotlib inline</code></pre>
+<pre><code class="python">gen = logbook.select(&quot;gen&quot;)
+avgs = logbook.select(&quot;avg&quot;)
+stds = logbook.select(&quot;std&quot;)</code></pre>
+<pre><code class="python">plt.rc(&#39;axes&#39;, labelsize=14)
+plt.rc(&#39;xtick&#39;, labelsize=14)
+plt.rc(&#39;ytick&#39;, labelsize=14)
+plt.rc(&#39;legend&#39;, fontsize=14)
+fig, ax1 = plt.subplots()
+line1 = ax1.errorbar(gen, avgs, yerr=stds, errorevery=2) 
+ax1.set_xlabel(&quot;Generation&quot;)
+ax1.set_ylabel(&quot;Mean Fitness&quot;)</code></pre>
+<p>Text(0, 0.5, ‘Mean Fitness’)<br><img src="/images/OneMax.png"></p>
 
         </div>
 
@@ -195,19 +265,10 @@
     
 <nav class="article-nav">
   
-    <a href="/3sum/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
-        
-          LeetCode 15 - 3sum
-        
-      </div>
-    </a>
   
-  
-    <a href="/remove-element/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/Discussion/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">LeetCode 27 - remove-element</div>
+      <div class="article-nav-title">Discussion</div>
     </a>
   
 </nav>
@@ -216,15 +277,15 @@
     <section class="share">
         <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
-            href="https://twitter.com/share?text=剑指offer 05 - replaceSpace - Hao Wu's Homepage&url=https://waley.tech/replaceSpace/">
+            href="https://twitter.com/share?text=OneMax Problem - Hao Wu's Homepage&url=https://waley.tech/max-one%20problem/">
             <box-icon type='logo' name='twitter'></box-icon>
         </a>
         <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=剑指offer 05 - replaceSpace - Hao Wu's Homepage&u=https://waley.tech/replaceSpace/">
+            href="https://www.facebook.com/sharer.php?title=OneMax Problem - Hao Wu's Homepage&u=https://waley.tech/max-one%20problem/">
             <box-icon name='facebook-square' type='logo' ></box-icon>
         </a>
         <!-- <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=剑指offer 05 - replaceSpace - Hao Wu's Homepage&url=https://waley.tech/replaceSpace/&pic=">
+            href="https://service.weibo.com/share/share.php?title=OneMax Problem - Hao Wu's Homepage&url=https://waley.tech/max-one%20problem/&pic=">
             <div class="n-icon n-icon-weibo"></div>
         </a> -->
     </section>
