@@ -100,6 +100,59 @@
   
     
       <article
+  id="post-Report Respons1"
+  class="article article-type-post"
+>
+
+  
+
+  <div class="article-inner">
+    
+
+    <div class="article-body">
+      <header class="article-title">
+        <a href="/Report%20Respons1/">报告写法 1</a>
+      </header>
+      <div class="article-entry post-inner-html">
+        
+          <h1 id="写法一：“原因分析-解决方案”"><a href="#写法一：“原因分析-解决方案”" class="headerlink" title="写法一：“原因分析 + 解决方案”"></a>写法一：“原因分析 + 解决方案”</h1><p>这种题型一般都会出现两个问题。<br>我们可以确定题型为Report，直接给出这两个问题的答案即可。<br><font color="red">注意：</font>Report题目问什么答什么即可，不需要自行添加内容。</p>
+<p><strong>回答需要具有普适性，进行客观讨论即可。如果要举例的话，注意考官是否能理解。</strong></p>
+<h2 id="文体结构"><a href="#文体结构" class="headerlink" title="文体结构"></a>文体结构</h2><pre><code>1. Introduction: 改写题目，给出预告
+2. Body Paragraph 1: 问题1
+3. Body Paragraph 2: 问题2
+4. Conclusion: 总结，重复</code></pre>
+        
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <footer class="article-footer">
+    <div class="article-more-info">
+      <div class="article-date">
+  <time datetime="2021-03-05T00:20:50.000Z" itemprop="datePublished">2021-03-05</time>
+</div>
+      
+        <div class="article-category">
+          <a class="article-category-link" href="/categories/IELTS/">IELTS</a>
+        </div>
+      
+      
+        <div class="article-tag">
+          <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TR/" rel="tag">TR</a></li></ul>
+        </div>
+      
+    </div>
+  </footer>
+
+</article>
+
+    
+  
+    
+      <article
   id="post-valid-anagram"
   class="article article-type-post"
 >
@@ -621,87 +674,6 @@
     <div class="article-more-info">
       <div class="article-date">
   <time datetime="2021-02-05T16:41:47.000Z" itemprop="datePublished">2021-02-05</time>
-</div>
-      
-        <div class="article-category">
-          <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
-        </div>
-      
-      
-        <div class="article-tag">
-          <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
-        </div>
-      
-    </div>
-  </footer>
-
-</article>
-
-    
-  
-    
-      <article
-  id="post-remove-element"
-  class="article article-type-post"
->
-
-  
-
-  <div class="article-inner">
-    
-
-    <div class="article-body">
-      <header class="article-title">
-        <a href="/remove-element/">LeetCode 27 - remove-element</a>
-      </header>
-      <div class="article-entry post-inner-html">
-        
-          <h1 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a><strong>移除元素</strong></h1><p>给你一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要 <code>原地</code> 移除所有数值等于 <code>val</code> 的元素，并返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须仅使用 <code>O(1)</code> 额外空间并 <code>原地</code> 修改输入数组。</p>
-<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
-<p> </p>
-<p>说明:</p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<p>你可以想象内部操作如下:</p>
-<pre><code class="Python">// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝
-int len = removeElement(nums, val);
-
-// 在函数里修改输入数组对于调用者是可见的。
-// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。
-for (int i = 0; i &lt; len; i++) &#123;
-    print(nums[i]);
-&#125;</code></pre>
-<p>示例 1：</p>
-<blockquote>
-<p>输入：nums = [3,2,2,3], val = 3<br>    输出：2, nums = [2,2]<br>    解释：函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案。</p>
-</blockquote>
-<p>示例 2：</p>
-<blockquote>
-<p>输入：nums = [0,1,2,2,3,0,4,2], val = 2<br>    输出：5, nums = [0,1,4,0,3]<br>    解释：函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。注意这五个元素可为任意顺序。你不需要考虑数组中超出新长度后面的元素。
- </p>
-</blockquote>
-<p>提示：</p>
-<blockquote>
-<ul>
-<li>0 &lt;= nums.length &lt;= 100</li>
-<li>0 &lt;= nums[i] &lt;= 50</li>
-<li>0 &lt;= val &lt;= 100</li>
-</ul>
-</blockquote>
-<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-insert-position">https://leetcode-cn.com/problems/search-insert-position</a></p>
-        
-      </div>
-    </div>
-
-    
-
-  </div>
-
-  <footer class="article-footer">
-    <div class="article-more-info">
-      <div class="article-date">
-  <time datetime="2021-02-05T00:41:47.000Z" itemprop="datePublished">2021-02-05</time>
 </div>
       
         <div class="article-category">
